@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,6 +37,7 @@ namespace Paymentsense.Coding.Challenge.Api
             {
                 client.BaseAddress = new Uri(Configuration["CountriesServiceBaseUrl"]);
             });
+            //.SetHandlerLifetime(TimeSpan.FromMinutes(5))
             services.AddResponseCompression();
         }
 
@@ -56,6 +56,7 @@ namespace Paymentsense.Coding.Challenge.Api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseResponseCompression();
 
             app.UseEndpoints(endpoints =>
             {

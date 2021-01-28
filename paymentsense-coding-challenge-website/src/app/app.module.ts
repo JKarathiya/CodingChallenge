@@ -4,22 +4,30 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PaymentsenseCodingChallengeApiService } from './services';
+import { CountriesService, PaymentsenseCodingChallengeApiService } from './services';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CountriesComponent, CountryDetailComponent } from './components';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountriesComponent,
+    CountryDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MaterialModule
   ],
-  providers: [PaymentsenseCodingChallengeApiService],
-  bootstrap: [AppComponent]
+  providers: [CountriesService, PaymentsenseCodingChallengeApiService],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CountryDetailComponent
+  ]
 })
 export class AppModule { }
